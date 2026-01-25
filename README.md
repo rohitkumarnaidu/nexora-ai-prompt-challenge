@@ -10,16 +10,12 @@ Nexora AI is an AI-powered content automation platform designed to help creators
 
 ## Repository Structure
 .kiro/
-├── product.md
-├── requirements.md
-├── architecture.md
-├── backend.md
-├── ai.md
-├── frontend.md
-├── data-model.md
-├── design.md
-├── workflows.md
-└── security.md
+└── specs/
+    └── nexora-ai-platform/
+        ├── requirements.md
+        ├── design.md
+        └── tasks.md  
+
 
 
 ## Note
