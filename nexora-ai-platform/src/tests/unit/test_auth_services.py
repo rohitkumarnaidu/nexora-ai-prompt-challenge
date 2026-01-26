@@ -79,7 +79,7 @@ class TestCognitoAuthService:
             mock_client.admin_initiate_auth.return_value = {
                 "AuthenticationResult": {
                     "AccessToken": "test-access-token",
-                    "IdToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LXN1YiIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImN1c3RvbTp0ZW5hbnRfaWQiOiJ0ZXN0LXRlbmFudC0xMjMifQ.fake-signature",
+                    "IdToken": "MOCK_ID_TOKEN",
                     "RefreshToken": "test-refresh-token",
                     "ExpiresIn": 3600,
                     "TokenType": "Bearer"
