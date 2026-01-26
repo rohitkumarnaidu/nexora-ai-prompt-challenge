@@ -1,0 +1,62 @@
+# Core AI and ML dependencies
+langchain==0.1.0
+langchain-aws==0.1.0
+langchain-community==0.0.13
+boto3==1.34.34
+botocore==1.34.34
+
+# Amazon Bedrock and AI services
+amazon-bedrock-langchain==0.1.0
+
+# Vector storage and search
+opensearch-py==2.4.2
+faiss-cpu==1.7.4
+sentence-transformers==2.2.2
+
+# Web framework and API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# AWS services integration
+aws-lambda-powertools==2.31.0
+aws-cdk-lib==2.120.0
+constructs>=10.0.0,<11.0.0
+
+# Database and caching
+aioboto3==12.3.0
+redis==5.0.1
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# Testing framework
+pytest==8.0.0
+pytest-asyncio==0.23.4
+pytest-mock==3.12.0
+hypothesis==6.98.1
+moto[all]==4.2.14
+
+# Development tools
+black==24.1.1
+isort==5.13.2
+flake8==7.0.0
+mypy==1.8.0
+pre-commit==3.6.0
+
+# Utilities
+python-dotenv==1.0.1
+structlog==24.1.0
+tenacity==8.2.3
+httpx==0.26.0
+aiofiles==23.2.1
+
+# LocalStack for local development
+localstack==3.1.0
+localstack-client==2.5.0
+
+# CDK specific
+aws-cdk.aws-lambda-python-alpha==2.120.0a0

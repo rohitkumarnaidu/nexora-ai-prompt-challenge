@@ -1,0 +1,2 @@
+# Responsible AI service dependencies
+# No specific dependencies beyond shared layer

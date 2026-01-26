@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  localstack:
+    container_name: nexora-localstack
+    image: localstack/localstack:3.1.0
+    ports:
+      - "4566:4566"            # LocalStack Gateway
+      - "4510-4559:4510-4559"  # External services port range
+    environment:
+      # LocalStack configuration
+      - DEBUG=1
+      - PERSISTENCE=1
+      - LAMBDA_EXECUTOR=docker
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
+      
+      # AWS services to enable
+      - SERVICES=lambda,apigateway,dynamodb,s3,cognito-idp,opensearch,elasticache,cloudwatch,logs,iam,sts
+      
+      # AWS configuration
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      
+      # LocalStack Pro features (if you have a license)
+      # - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY}
+      
+    volumes:
+      - "${TMPDIR:-/tmp}/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - nexora-network
+
+  # Redis for caching (alternative to ElastiCache in local development)
+  redis:
+    container_name: nexora-redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - nexora-network
+
+  # Optional: PostgreSQL for local development (if needed)
+  # postgres:
+  #   container_name: nexora-postgres
+  #   image: postgres:15-alpine
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_DB=nexora
+  #     - POSTGRES_USER=nexora
+  #     - POSTGRES_PASSWORD=nexora123
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - nexora-network
+
+volumes:
+  redis_data:
+  # postgres_data:
+
+networks:
+  nexora-network:
+    driver: bridge
